@@ -1,0 +1,51 @@
+
+9/13/2017 9:06:32 AM
+------------------------------------------------------------------------------------------------
+Controller Name :- ShowAllTimeSheet
+Action Method Name :- LoadTimeSheetData
+------------------------------------------------------------------------------------------------
+System.Web.Mvc.ExceptionContext
+Message ---
+{0}No property or field 'asc' exists in type 'TimeSheetMasterView'
+.Net Error ---
+{0}Check MVC Ajax Code For Error
+Source ---
+{0}System.Linq.Dynamic
+StackTrace ---
+{0}   at System.Linq.Dynamic.ExpressionParser.ParseMemberAccess(Type type, Expression instance)
+   at System.Linq.Dynamic.ExpressionParser.ParseIdentifier()
+   at System.Linq.Dynamic.ExpressionParser.ParsePrimaryStart()
+   at System.Linq.Dynamic.ExpressionParser.ParsePrimary()
+   at System.Linq.Dynamic.ExpressionParser.ParseUnary()
+   at System.Linq.Dynamic.ExpressionParser.ParseMultiplicative()
+   at System.Linq.Dynamic.ExpressionParser.ParseAdditive()
+   at System.Linq.Dynamic.ExpressionParser.ParseComparison()
+   at System.Linq.Dynamic.ExpressionParser.ParseLogicalAnd()
+   at System.Linq.Dynamic.ExpressionParser.ParseLogicalOr()
+   at System.Linq.Dynamic.ExpressionParser.ParseExpression()
+   at System.Linq.Dynamic.ExpressionParser.ParseOrdering()
+   at System.Linq.Dynamic.DynamicQueryable.OrderBy(IQueryable source, String ordering, Object[] values)
+   at System.Linq.Dynamic.DynamicQueryable.OrderBy[T](IQueryable`1 source, String ordering, Object[] values)
+   at WebTimeSheetManagement.Concrete.TimeSheetConcrete.ShowAllTimeSheet(String sortColumn, String sortColumnDir, String Search, Int32 UserID) in C:\Users\Sai\Documents\Visual Studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Concrete\TimeSheetConcrete.cs:line 277
+   at WebTimeSheetManagement.Controllers.ShowAllTimeSheetController.LoadTimeSheetData() in C:\Users\Sai\Documents\Visual Studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement\Controllers\ShowAllTimeSheetController.cs:line 54
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+TargetSite ---
+{0}System.Linq.Expressions.Expression ParseMemberAccess(System.Type, System.Linq.Expressions.Expression)
+

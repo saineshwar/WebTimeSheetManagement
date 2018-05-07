@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h3>Roles</h3>
+
+<link href="~/Scripts/dataTablesScripts/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Scripts/dataTablesScripts/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/dataTablesScripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/dataTablesScripts/dataTables.bootstrap4.min.js"></script>
+<style type="text/css">
+    #scrolly {
+        width: 1000px;
+        height: 450px;
+        overflow: auto;
+        overflow-y: hidden;
+        margin: 0 auto;
+        white-space: nowrap;
+    }
+</style>
+
+<div class="container">
+    <br />
+
+    <div style="width:90%; margin:0 auto;">
+        <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>RegistrationID</th>
+                    <th>Name</th>
+                    <th>AssignToAdmin</th>
+                    <th>RemoveRole</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ajax": {
+                "url": "/AllRoles/LoadRolesData",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs":
+            [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [3],
+                "visible": true,
+                "searchable": false,
+                "orderable": false
+            }],
+            "columns": [
+                { "data": "RegistrationID", "name": "RegistrationID", "autoWidth": true },
+                { "data": "Name", "name": "Name", "autoWidth": true },
+
+                                    {
+                                        "render": function (data, type, full, meta) {
+                                            if (full.AssignToAdmin == "*Not Assigned*") {
+                                                return "<lable class='alert-danger'>*Not Assigned*</lable>";
+                                            }
+                                            else {
+                                              
+                                                return "<lable class='alert-success'>" + full.AssignToAdmin + "</lable>";
+                                            }
+                                        }
+                                    },
+
+
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.AssignToAdmin == "*Not Assigned*") {
+                            return "*Not Assigned*";
+                        }
+                        else {
+                            return "<a href='#' class='btn btn-danger' onclick=Removefromrole('" + full.RegistrationID + "'); >Remove Role</a>";
+                        }
+                    }
+                },
+            ]
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+
+    function Removefromrole(ID) {
+        if (confirm("Are you sure you want to Remove Role ...?")) {
+            Removerole(ID);
+        }
+        else {
+            return false;
+        }
+    }
+    function Removerole(ID) {
+        var url = '@Url.Content("~/")' + "AllRoles/RemovefromRole";
+        $.post(url, { RegistrationID: ID }, function (data) {
+            if (data) {
+                oTable = $('#myTable').DataTable();
+                oTable.draw();
+            }
+            else {
+                alert("Something Went Wrong!");
+            }
+        });
+    }
+</script>
+

@@ -1,0 +1,24 @@
+﻿/*.field-validation-error {
+    color: #f00; position:absolute;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}*/
+.manadatory:before {content: '*';color: Red;}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}

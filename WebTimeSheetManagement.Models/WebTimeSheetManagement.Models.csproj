@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2ACCB7ED-9572-4EF6-9FA0-5B195C470962}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebTimeSheetManagement.Models</RootNamespace>
+    <AssemblyName>WebTimeSheetManagement.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssignedRoles.cs" />
+    <Compile Include="AssignRolesModel.cs" />
+    <Compile Include="AuditTB.cs" />
+    <Compile Include="ChangePasswordModel.cs" />
+    <Compile Include="DescriptionTB.cs" />
+    <Compile Include="DisplayViewModel.cs" />
+    <Compile Include="Documents.cs" />
+    <Compile Include="DocumentsVM.cs" />
+    <Compile Include="Expense.cs" />
+    <Compile Include="ExpenseApprovalModel.cs" />
+    <Compile Include="ExpenseModelView.cs" />
+    <Compile Include="LoginViewModel.cs" />
+    <Compile Include="NotificationsTB.cs" />
+    <Compile Include="ProjectMaster.cs" />
+    <Compile Include="Registration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationViewDetailsModel.cs" />
+    <Compile Include="RegistrationViewSummaryModel.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="TimeSheetAuditTB.cs" />
+    <Compile Include="TimeSheetDetails.cs" />
+    <Compile Include="TimeSheetDetailsView.cs" />
+    <Compile Include="TimeSheetExportModel.cs" />
+    <Compile Include="TimeSheetMaster.cs" />
+    <Compile Include="TimeSheetMasterView.cs" />
+    <Compile Include="TimeSheetModel.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

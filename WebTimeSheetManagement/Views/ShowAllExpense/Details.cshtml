@@ -1,0 +1,132 @@
+﻿@model WebTimeSheetManagement.Models.ExpenseModelView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/ajaxjquery.min.js"></script>
+<script src="~/Scripts/jquery.expense.js"></script>
+
+<h4 class="page-header">Details</h4>
+<p>
+    @Html.ActionLink("Back to Main View", "Expense", "ShowAllExpense", null, new { @class = "btn btn-default" })
+</p>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Expense Details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.ProjectName)
+                @Html.TextBoxFor(model => model.ProjectName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.HiddenFor(model => model.ExpenseID)
+                @Html.LabelFor(model => model.PurposeorReason)
+                @Html.TextAreaFor(model => model.PurposeorReason, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.FromDate)
+                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.ToDate)
+                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.VoucherID)
+                @Html.TextBoxFor(model => model.VoucherID, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.HotelBills)
+                @Html.TextBoxFor(model => model.HotelBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.TravelBills)
+                @Html.TextBoxFor(model => model.TravelBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.MealsBills)
+                @Html.TextBoxFor(model => model.MealsBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.LandLineBills)
+                @Html.TextBoxFor(model => model.LandLineBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.TransportBills)
+                @Html.TextBoxFor(model => model.TransportBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.MobileBills)
+                @Html.TextBoxFor(model => model.MobileBills, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Miscellaneous)
+                @Html.TextBoxFor(model => model.Miscellaneous, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.TotalAmount)
+                @Html.TextBoxFor(model => model.TotalAmount, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.CreatedOn)
+                @Html.TextBoxFor(model => model.CreatedOn, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.ExpenseStatus)
+                @Html.TextBoxFor(model => model.ExpenseStatus, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-3">
+                @Html.Label("Download")
+           
+
+                @{
+                    var documents = (List<WebTimeSheetManagement.Models.DocumentsVM>)ViewBag.documents;
+
+                    foreach (var document in documents)
+                    {
+                        var filename = document.DocumentType + " Document";
+                
+
+                        var link = "/ShowAllExpense/Download?id=" + Model.ExpenseID + "&DocumentID=" + document.DocumentID;
+                        <h5>
+                            <a href="@link">
+                                <i class="fa fa-download fa-fw"></i>@filename
+                            </a>
+                        </h5>
+
+                    }
+
+                }
+
+
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Label("Comment", new { @class = "manadatory" })
+                @Html.TextArea("Comment", null, new { @class = "form-control", @maxlength = "30" })
+            </div>
+            <div class="col-md-6">
+                <br />
+                <input type="submit" onclick="return ApproveExpense();" value="Approve" class="btn btn-success" />
+                <input type="submit" onclick="return RejectExpense();" value="Reject" class="btn btn-success" />
+                @Html.ActionLink("Cancel", "Expense", "ShowAllExpense", null, new { @class = "btn btn-danger" })
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model WebTimeSheetManagement.Models.ExpenseExcelExportModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+
+<script>
+    if ('@TempData["NoExportMessage"]' != '') {
+        alert('@TempData["NoExportMessage"]');
+    }
+</script>
+
+
+
+@using (Html.BeginForm("ExportToExcel", "ExpenseMasterExport", FormMethod.Post))
+{
+    <div style="margin-top:10px;"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Expense Report</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.FromDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @onkeypress = "return false;" })
+                    @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ToDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", @onkeypress = "return false;" })
+                    @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+            <div style="margin-top:10px;"></div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-0 col-md-12">
+                        <input type="submit" value="Export to Excel" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#ToDate').prop('disabled', true);
+        $("#FromDate").datepicker
+            ({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                numberOfMonths: 1,
+                changeYear: true,
+                yearRange: new Date().getFullYear() + ':' + new Date().getFullYear(),
+                onSelect: function (date) {
+                    $('#ToDate').prop('disabled', false);
+                    var dt2 = $('#ToDate');
+                    var startDate = $(this).datepicker('getDate');
+                    var minDate = $(this).datepicker('getDate');
+                    dt2.datepicker('setDate', minDate);
+                    startDate.setDate(startDate.getDate() + 60);
+                    //sets dt2 maxDate to the last day of 30 days window
+                    dt2.datepicker('option', 'maxDate', startDate);
+                    dt2.datepicker('option', 'minDate', minDate);
+                    $(this).datepicker('option', 'minDate', minDate);
+                }
+            });
+    });
+    $(document).ready(function () {
+        $("#ToDate").datepicker
+            ({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                yearRange: new Date().getFullYear() + ':' + new Date().getFullYear(),
+                onSelect: function (date) {
+
+                }
+            });
+    });
+</script>

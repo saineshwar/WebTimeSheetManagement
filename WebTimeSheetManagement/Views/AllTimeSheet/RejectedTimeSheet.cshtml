@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "RejectedTimeSheet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<link href="~/Scripts/dataTablesScripts/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Scripts/dataTablesScripts/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/dataTablesScripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/dataTablesScripts/dataTables.bootstrap4.min.js"></script>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">All Rejected TimeSheet</div>
+            <div class="panel-body">
+                <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>TimeSheetMasterID</th>
+                            <th>FromDate</th>
+                            <th>ToDate</th>
+                            <th>TotalHours</th>
+                            <th>CreatedOn</th>
+                            <th>TimeSheetStatus</th>
+                            <th>Comment</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ajax": {
+                "url": "/AllTimeSheet/LoadRejectedTimeSheetData",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs":
+            [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+              {
+                  "targets": [6],
+                  "searchable": false,
+                  "orderable": false
+              },
+                {
+                    "targets": [7],
+                    "searchable": false,
+                    "orderable": false
+                },
+
+
+
+            ],
+            "columns": [
+                { "data": "TimeSheetMasterID", "name": "TimeSheetMasterID", "autoWidth": true },
+                { "data": "FromDate", "name": "FromDate", "autoWidth": true },
+                { "data": "ToDate", "name": "ToDate", "autoWidth": true },
+                { "data": "TotalHours", "name": "TotalHours", "autoWidth": true },
+                { "data": "CreatedOn", "name": "CreatedOn", "autoWidth": true },
+                { "data": "TimeSheetStatus", "name": "TimeSheetStatus", "title": "Status", "autoWidth": true },
+                { "data": "Comment", "name": "Comment", "title": "Comment", "autoWidth": true },
+                {
+                    "render": function (data, type, full, meta)
+                    { return '<a class="btn btn-info" href="/AllTimeSheet/Details/' + full.TimeSheetMasterID + '">View</a>'; }
+                },
+            ]
+
+        });
+    });
+
+
+
+</script>
+
+
+
+
+

@@ -1,0 +1,76 @@
+﻿@model WebTimeSheetManagement.Models.NotificationsTB
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Add Notification</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.Message, new { @class = "manadatory" })
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @maxlength = 50, @style = "width: 300px; height: 100px;" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.FromDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @maxlength = 50})
+                    @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.ToDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", @maxlength = 50})
+                    @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div style="margin-top:10px;" class="col-md-offset-0 col-md-12">
+                        <input type="submit" onclick="return confirm('Do you want to Save Message?');" value="Save Details" class="btn btn-success" />
+                        @Html.ActionLink("Cancel", "Add", "AddNotification", null, new { @class = "btn btn-danger" })
+
+                        @Html.ActionLink("All Notification", "AllNotification", "AddNotification", null, new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+    
+        var minDateTime = new Date();
+        minDateTime.setHours(minDateTime.getHours() - 1);
+        $("#FromDate").datetimepicker({
+            minDate: 0,
+            minDateTime: minDateTime,
+            todayButton: true,
+            closeOnWithoutClick: true,
+            scrollInput: false,
+            closeOnDateTimeSelect: true,
+            defaultTime: minDateTime.getHours() + ":" + minDateTime.getMinutes(),
+            step: 5
+        });
+
+        $("#ToDate").datetimepicker({
+            minDate: 0,
+            minDateTime: minDateTime,
+            todayButton: true,
+            closeOnWithoutClick: true,
+            scrollInput: false,
+            closeOnDateTimeSelect: true,
+            defaultTime: minDateTime.getHours() + ":" + minDateTime.getMinutes(),
+            step:5
+        });
+
+    });
+</script>

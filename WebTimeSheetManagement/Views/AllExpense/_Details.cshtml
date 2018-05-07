@@ -1,0 +1,113 @@
+﻿@model WebTimeSheetManagement.Models.ExpenseModelView
+
+<div style="margin-top:10px;"></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Expense Details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="ProjectName" class="col-form-label">ProjectName:</label>
+                @Html.DisplayFor(model => model.ProjectName)
+            </div>
+            <div class="col-md-6">
+                <label for="PurposeorReason" class="col-form-label">PurposeorReason:</label>
+                @Html.DisplayFor(model => model.PurposeorReason)
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="FromDate" class="col-form-label">FromDate:</label>
+                @Html.DisplayFor(model => model.FromDate)
+            </div>
+            <div class="col-md-6">
+                <label for="ToDate" class="col-form-label">ToDate:</label>
+                @Html.DisplayFor(model => model.ToDate)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Type of Expense</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="HotelBills" class="col-form-label">HotelBills:</label>
+                @Html.DisplayFor(model => model.HotelBills)
+            </div>
+            <div class="col-md-3">
+                <label for="HotelBills" class="col-form-label">MealsBills:</label>
+                @Html.DisplayFor(model => model.MealsBills)
+            </div>
+            <div class="col-md-3">
+                <label for="LandLineBills" class="col-form-label">LandLineBills:</label>
+                @Html.DisplayFor(model => model.LandLineBills)
+            </div>
+            <div class="col-md-3">
+                <label for="LandLineBills" class="col-form-label">MobileBills:</label>
+                @Html.DisplayFor(model => model.MobileBills)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="TransportBills" class="col-form-label">TransportBills:</label>
+                @Html.DisplayFor(model => model.TransportBills)
+            </div>
+            <div class="col-md-3">
+                <label for="TravelBills" class="col-form-label">TravelBills:</label>
+                @Html.DisplayFor(model => model.TravelBills)
+            </div>
+            <div class="col-md-3">
+                <label for="Miscellaneous" class="col-form-label">Miscellaneous:</label>
+                @Html.DisplayFor(model => model.Miscellaneous)
+            </div>
+            <div class="col-md-3">
+                <label for="VoucherID" class="col-form-label">VoucherID:</label>
+                @Html.DisplayFor(model => model.VoucherID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="TotalAmount" class="col-form-label">TotalAmount:</label>
+                @Html.DisplayFor(model => model.TotalAmount)
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Documents Attached</div>
+    <div class="panel-body">
+        @{
+            var documents = (List<WebTimeSheetManagement.Models.DocumentsVM>)ViewBag.documents;
+            foreach (var document in documents)
+            {
+
+                <div class="col-md-4">
+                    <h5>
+                        @{
+                            var filename = document.DocumentType + " Document";
+                            var link = "/AllExpense/Download?ExpenseID=" + Model.ExpenseID + "&DocumentID=" + document.DocumentID;
+                        }
+                        <a href="@link">
+                            <i class="fa fa-download fa-fw"></i>@filename
+                        </a>
+                    </h5>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+<div style="margin-top:10px;"></div>
+
+
+
+
+
+
+
+
+

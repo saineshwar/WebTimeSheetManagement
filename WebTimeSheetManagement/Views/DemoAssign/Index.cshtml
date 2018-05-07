@@ -1,0 +1,73 @@
+﻿@model WebTimeSheetManagement.Models.AssignRolesModel
+@{
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+
+}
+
+<h4 class="page-header">Assign Roles</h4>
+
+
+@using (Html.BeginForm())
+{
+
+    if (TempData["MessageRoles"] != null)
+                {
+        <p class="alert alert-success" id="successMessage">@TempData["MessageRoles"] </p>
+    }
+
+    if (TempData["MessageErrorRoles"] != null)
+                {
+        <p class="alert alert-danger" id="successMessage">@TempData["MessageErrorRoles"] </p>
+    }
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Choose Admin</label>
+            @Html.DropDownListFor(a => a.RegistrationID, new SelectList(Model.ListofAdmins, "RegistrationID", "Name"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.RegistrationID)
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        
+    </div>
+   <br />
+        <div class="panel panel-default">
+     
+            <div class="panel-heading">Choose Users To Assign to Admin</div>
+            <div class="panel-body">
+                @for (var i = 0; i < Model.ListofUser.Count(); i++)
+                {
+                   
+
+                    <div class="col-md-4">
+                        <div>
+                            @Html.CheckBoxFor(it => Model.ListofUser[i].selectedUsers)
+                            <label>
+                                @Html.DisplayFor(it => Model.ListofUser[i].Name)
+                                @Html.HiddenFor(it => Model.ListofUser[i].RegistrationID)
+                                @Html.HiddenFor(it => Model.ListofUser[i].Name)
+                            </label>
+                        </div>
+                    </div>
+
+
+                }
+
+               
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-0 col-md-12">
+                            <input type="submit" value="Assign Role" class="btn btn-success" />
+
+                            @Html.ActionLink("Cancel", "Dashboard", "SuperAdmin", null, new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+}
+

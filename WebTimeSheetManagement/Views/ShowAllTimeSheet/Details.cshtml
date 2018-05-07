@@ -1,0 +1,76 @@
+﻿@model WebTimeSheetManagement.Models.MainTimeSheetView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/ajaxjquery.min.js"></script>
+<script src="~/Scripts/jquery.timesheetprocess.js"></script>
+<h2>Details</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<p>
+    @Html.ActionLink("Back to Main View", "TimeSheet", "ShowAllTimeSheet")
+</p>
+<table id="DivIdToPrint" style="border:1" class="table">
+    <tr>
+        <td><b>Project Name</b></td>
+        @foreach (var item in Model.ListoDayofWeek)
+        {
+
+            <td><b>@Html.DisplayFor(modelItem => item)</b></td>
+        }
+        <td>Description</td>
+    </tr>
+    <tr>
+        <td></td>
+        @foreach (var item in Model.ListofPeriods)
+            {
+
+            <td><b>@Html.DisplayFor(modelItem => item.Period)</b></td>
+        }
+        <td></td>
+        <td></td>
+    </tr>
+
+
+    @for (int i = 0; i < Model.ListofProjectNames.Count(); i++)
+    {
+        <tr>
+            <td><b>@Model.ListofProjectNames[i].ProjectName</b></td>
+
+            @{
+                var ListofHours = WebTimeSheetManagement.Helpers.MethodonViews.GetHoursbyTimeSheetMasterID(Model.TimeSheetMasterID, Model.ListofProjectNames[i].ProjectID);
+                var ListofDescription = WebTimeSheetManagement.Helpers.MethodonViews.GetDescriptionbyTimeSheetMasterID(Model.TimeSheetMasterID, Model.ListofProjectNames[i].ProjectID);
+                foreach (var item in ListofHours)
+                {
+                    <td><b>@Html.DisplayFor(modelItem => item.Hours)</b></td>
+                }
+                <td>@ListofDescription</td>
+            }
+        </tr>
+                }
+    @Html.HiddenFor(model => model.TimeSheetMasterID)
+</table>
+<div class="panel panel-default">
+    <div class="panel-heading">Expense Details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Comment", new { @class = "manadatory" })
+                @Html.TextArea("Comment", new { @class = "form-control", @maxlength = "30" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br />
+            <input type="submit" onclick="return Approvetimesheet();" value="Approve" class="btn btn-success" />
+            <input type="submit" onclick="return Rejecttimesheet();" value="Reject" class="btn btn-success" />
+            @Html.ActionLink("Cancel", "TimeSheet", "ShowAllTimeSheet", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>

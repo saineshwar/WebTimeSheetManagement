@@ -1,0 +1,70 @@
+﻿@model WebTimeSheetManagement.Models.LoginViewModel
+@using CaptchaMvc.HtmlHelpers  
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<style>
+
+    #CaptchaInputText {
+        text-transform: uppercase;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="login-panel">
+        @if (ViewBag.errormessage != null)
+        {
+            <p class="alert alert-danger" id="successMessage">@ViewBag.errormessage</p>
+        }
+      
+        <div class="form-group">
+            <div class="col-md-12 col-xs-12">
+                <h3>Login</h3>
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+
+        
+        <div class="form-group">
+            
+            <div class="col-md-12 col-xs-12">
+                @Html.LabelFor(model => model.Username)
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @maxlength = 20 })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+          
+            <div class="col-md-12 col-xs-12">
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @maxlength = 30 })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           
+            <div class="col-md-12 col-xs-12">
+                <div id="captcha" class="captcha">
+                    @Html.Label("Captcha")
+                    @Html.Captcha("Refresh", "Enter the text you see above", 5, "<span class='text-danger'>Enter Captcha</span>", true)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-0 col-md-10">
+                <input id="Submit1" class="btn btn-success" type="submit" value="Sign in To Account">
+            </div>
+
+        </div>
+        
+    </div>
+}

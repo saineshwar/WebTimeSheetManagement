@@ -1,0 +1,198 @@
+﻿@model WebTimeSheetManagement.Models.ExpenseModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<script src="~/Scripts/jquery.total.js"></script>
+<script src="~/Scripts/jquery.documentvalidate.js"></script>
+
+<script>
+    if ('@TempData["ExpenseMessage"]' != '') {
+        alert('@TempData["ExpenseMessage"]');
+    }
+</script>
+
+<div style="margin-top:10px;"></div>
+@using (Html.BeginForm("Add", "Expense", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="panel panel-default">
+        <div class="panel-heading">Expense Details</div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ProjectID, new { @class = "manadatory" })
+                    @Html.DropDownListFor(m => m.ProjectID, new SelectList(string.Empty, "ProjectID", "ProjectName"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.PurposeorReason, new { @class = "manadatory" })
+                    @Html.TextAreaFor(model => model.PurposeorReason, new { @class = "form-control" , @maxlength = "90" })
+                    @Html.ValidationMessageFor(model => model.PurposeorReason, "", new { @class = "text-danger"})
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.FromDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @onkeypress = "return false;" })
+                    @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ToDate, new { @class = "manadatory" })
+                    @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", @onkeypress = "return false;" })
+                    @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Type of Expense</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.HotelBills)
+                    @Html.TextBoxFor(model => model.HotelBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.HotelBills, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.MealsBills)
+                    @Html.TextBoxFor(model => model.MealsBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.MealsBills, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.LandLineBills)
+                    @Html.TextBoxFor(model => model.LandLineBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.LandLineBills, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.MobileBills)
+                    @Html.TextBoxFor(model => model.MobileBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.MobileBills, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TransportBills)
+                    @Html.TextBoxFor(model => model.TransportBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.TransportBills, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TravelBills)
+                    @Html.TextBoxFor(model => model.TravelBills, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.TravelBills, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Miscellaneous)
+                    @Html.TextBoxFor(model => model.Miscellaneous, new { @maxlength = "6", @class = "form-control", @onkeypress = "return onlyNumbers(event);", @onblur = "CalculateTotalonRun();" })
+                    @Html.ValidationMessageFor(model => model.Miscellaneous, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TotalAmount)
+                    @Html.TextBoxFor(model => model.TotalAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TotalAmount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.VoucherID)
+                    @Html.TextBoxFor(model => model.VoucherID, new { @maxlength = "30", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VoucherID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.Label(".Zip Attachments", new { @class = "manadatory" })
+                    <input type="file" onchange="ValidateFile(this);"  class="form-control" name="file" id="file" />
+                    <span id="val_file" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    @Html.Label("Single Attachment", new { @class = "manadatory" })
+                    <input type="file" onchange="ValidateImagesOnly(this);" class="form-control" name="Singlefile" id="Singlefile" />
+                    <span id="val_fileSingle" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <br />
+                    @Html.Label("[Scan Copies of Hotel, Travel, Meals, Mobile, Transport, Miscellaneous Bills Zip Them and Upload Zip]", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:10px;"></div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-offset-0 col-md-12">
+                <input type="submit" onclick="return ValidateData();" value="Save Details" class="btn btn-success" />
+
+                @Html.ActionLink("Cancel", "Add", "Expense", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if ($("#FromDate").val() == '') {
+            $("#ToDate").prop('disabled', true);
+        }
+        else {
+            $("#ToDate").prop('disabled', false);
+        }
+    });
+
+
+    $(document).ready(function () {
+        $("#FromDate").datepicker
+            ({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                numberOfMonths: 1,
+                changeYear: true,
+                yearRange: new Date().getFullYear() + ':' + new Date().getFullYear(),
+                onSelect: function (date) {
+                    $("#ToDate").prop('disabled', false);
+                    var dt = new Date(date);
+                    dt.setDate(dt.getDate());
+                    $("#ToDate").datepicker("option", "minDate", dt);
+                }
+            });
+    });
+    $(document).ready(function () {
+        $("#ToDate").datepicker
+            ({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                yearRange: new Date().getFullYear() + ':' + new Date().getFullYear(),
+                onSelect: function (date) {
+
+                }
+            });
+    });
+
+   
+    $(document).ready(function ()
+    {
+        $.getJSON('@Url.Content("~/")' + "Expense/ListofProjects", function (data)
+        {
+            var items1 = '';
+            items1 += "<option value='" + "" + "'>" + "----Select----" + "</option>";
+            $("#ProjectID").empty();
+            $.each(data, function (i, Project)
+            {
+                items1 += "<option value='" + Project.ProjectID + "'>" + Project.ProjectName + "</option>";
+            });
+            $('#ProjectID').html(items1);
+        });
+    });
+</script>
+
+
