@@ -1,5 +1,0 @@
-c:\users\sai\documents\visual studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Model\bin\Debug\WebTimeSheetManagement.Model.dll
-c:\users\sai\documents\visual studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Model\bin\Debug\WebTimeSheetManagement.Model.pdb
-c:\users\sai\documents\visual studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Model\obj\Debug\WebTimeSheetManagement.Model.csprojResolveAssemblyReference.cache
-c:\users\sai\documents\visual studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Model\obj\Debug\WebTimeSheetManagement.Model.dll
-c:\users\sai\documents\visual studio 2015\Projects\WebTimeSheetManagement\WebTimeSheetManagement.Model\obj\Debug\WebTimeSheetManagement.Model.pdb
