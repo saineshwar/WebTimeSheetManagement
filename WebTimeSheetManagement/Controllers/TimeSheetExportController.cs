@@ -184,6 +184,12 @@ namespace WebTimeSheetManagement.Controllers
 
                                 var data = _ITimeSheet.GetPeriodsbyTimeSheetMasterID(Convert.ToInt32(timesheetID));
 
+                                if (data.Count == 0)
+                                {
+                                    TempData["NoExportMessage"] = "No Data to Export";
+                                    return View("TimeSheetReport", new TimeSheetExportUserModel());
+                                }
+
                                 DataRow row2 = dt.NewRow();
                                 row2["ProjectName"] = "";
                                 row2["Sunday"] = "";

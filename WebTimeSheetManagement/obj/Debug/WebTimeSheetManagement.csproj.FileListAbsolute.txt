@@ -386,3 +386,5 @@ D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Microsoft.AspNet.S
 D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Elmah.dll
+D:\Projects\WebTimeSheetManagement\WebTimeSheetManagement\bin\Elmah.Mvc.dll
