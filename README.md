@@ -42,3 +42,20 @@ Link: - https://datatables.net/
 
 Encryption Library
 1.	AES 256
+
+
+<b> Login credentials with Password </b>
+
+<b> User </b>
+Username :- demouser 
+Password :- 1234567
+
+<b> Admin </b>
+Username :-demoadmin 
+Password :-1234567
+
+<b> SuperAdmin </b>
+Username :-SuperAdmin
+Password :-1234567
+
+
