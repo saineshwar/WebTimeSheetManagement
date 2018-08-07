@@ -42,7 +42,14 @@ namespace WebTimeSheetManagement
             try
             {
                 Server.ClearError();
-                Response.Redirect("~/Errorview/Error");
+                // Below line execute in infinite loops as below path is not found so updated code
+                //Response.Redirect("~/Errorview/Error");
+
+                // Updated code for redirect to Error page in general 
+                //need to create separate page for Well known error. e.g. 404 Error
+                Response.Redirect("~/Error/Error");
+
+
             }
             finally
             {
