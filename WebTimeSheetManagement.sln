@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTimeSheetManagement", "WebTimeSheetManagement\WebTimeSheetManagement.csproj", "{589B6CDA-A82D-4F89-88F8-8307327399AF}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTimeSheetManagement.Concrete", "WebTimeSheetManagement.Concrete\WebTimeSheetManagement.Concrete.csproj", "{537C72C9-A6CC-45AB-B235-5C8C38A5D673}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTimeSheetManagement.Models", "WebTimeSheetManagement.Models\WebTimeSheetManagement.Models.csproj", "{2ACCB7ED-9572-4EF6-9FA0-5B195C470962}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebTimeSheetManagementDatabase", "WebTimeSheetManagementDatabase\WebTimeSheetManagementDatabase.sqlproj", "{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,17 @@ Global
 		{2ACCB7ED-9572-4EF6-9FA0-5B195C470962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ACCB7ED-9572-4EF6-9FA0-5B195C470962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ACCB7ED-9572-4EF6-9FA0-5B195C470962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BCC9924-8CA1-4628-9829-83E5EBCBFABD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6A4A222-5AAF-4899-AFB2-3C3D1965572F}
 	EndGlobalSection
 EndGlobal
