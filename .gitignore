@@ -33,3 +33,7 @@ $RECYCLE.BIN/
 /WebTimeSheetManagement.Interface/obj/Debug
 /WebTimeSheetManagement.Models/obj/Debug
 /WebTimeSheetManagementDatabase/Import Schema Logs
+/packages/Dapper.2.0.78
+/WebTimeSheetManagement.Concrete/bin/Debug
+/WebTimeSheetManagement.Interface/bin/Debug
+/WebTimeSheetManagement.Models/bin/Debug
