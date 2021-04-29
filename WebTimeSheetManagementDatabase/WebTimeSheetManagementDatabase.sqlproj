@@ -24,6 +24,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -62,6 +63,7 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="Service Broker\" />
+    <Folder Include="DeploymentScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\TimeSheetMaster.sql" />
@@ -122,5 +124,22 @@
     <Build Include="dbo\Stored Procedures\SqlQueryNotificationStoredProcedure-d78299b8-77ec-4dae-93fc-8e458c0b2e45.sql" />
     <Build Include="Service Broker\SqlQueryNotificationService-d78299b8-77ec-4dae-93fc-8e458c0b2e45.sql" />
     <Build Include="Service Broker\SqlQueryNotificationService-d78299b8-77ec-4dae-93fc-8e458c0b2e45_1.sql" />
+    <Build Include="DeploymentScripts\dbo.AssignedRoles.sql" />
+    <Build Include="DeploymentScripts\dbo.AuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.DescriptionTB.sql" />
+    <Build Include="DeploymentScripts\dbo.Documents.sql" />
+    <Build Include="DeploymentScripts\dbo.ELMAH_Error.sql" />
+    <Build Include="DeploymentScripts\dbo.Expense.sql" />
+    <Build Include="DeploymentScripts\dbo.ExpenseAuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.NotificationsTB.sql" />
+    <Build Include="DeploymentScripts\dbo.ProjectMaster.sql" />
+    <Build Include="DeploymentScripts\dbo.Registration.sql" />
+    <Build Include="DeploymentScripts\dbo.Roles.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetAuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetDetails.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetMaster.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="DeploymentScripts\Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>
