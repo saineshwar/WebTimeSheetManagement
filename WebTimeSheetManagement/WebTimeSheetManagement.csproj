@@ -546,6 +546,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="EntityModels\" />
     <Folder Include="ErrorLog\" />
+    <Folder Include="uploads\logs\" />
     <Folder Include="Views\TimeSheetMaster\" />
   </ItemGroup>
   <ItemGroup>

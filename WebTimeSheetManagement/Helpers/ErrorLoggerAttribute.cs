@@ -51,18 +51,20 @@ namespace WebTimeSheetManagement.Helpers
 
             string error_folder = ConfigurationManager.AppSettings["ErrorLogPath"].ToString();
 
-            if (!System.IO.Directory.Exists(error_folder))
+            string strErrorFolder = Path.Combine(HttpRuntime.AppDomainAppPath, error_folder);
+
+            if (!System.IO.Directory.Exists(strErrorFolder))
             {
-                System.IO.Directory.CreateDirectory(error_folder);
+                System.IO.Directory.CreateDirectory(strErrorFolder);
             }
 
-            if (!File.Exists(String.Format(@"{0}\Log_{1}.txt", error_folder, timestamp)))
+            if (!File.Exists(String.Format(@"{0}\Log_{1}.txt", strErrorFolder, timestamp)))
             {
-                log = new StreamWriter(String.Format(@"{0}\Log_{1}.txt", error_folder, timestamp));
+                log = new StreamWriter(String.Format(@"{0}\Log_{1}.txt", strErrorFolder, timestamp));
             }
             else
             {
-                log = File.AppendText(String.Format(@"{0}\Log_{1}.txt", error_folder, timestamp));
+                log = File.AppendText(String.Format(@"{0}\Log_{1}.txt", strErrorFolder, timestamp));
             }
 
             var controllerName = (string)filterContext.RouteData.Values["controller"];
