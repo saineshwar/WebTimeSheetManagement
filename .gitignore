@@ -37,3 +37,4 @@ $RECYCLE.BIN/
 /WebTimeSheetManagement.Concrete/bin/Debug
 /WebTimeSheetManagement.Interface/bin/Debug
 /WebTimeSheetManagement.Models/bin/Debug
+/WebTimeSheetManagement/*.user
