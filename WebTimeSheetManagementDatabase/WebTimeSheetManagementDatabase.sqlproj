@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>WebTimeSheetManagementDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{2bcc9924-8ca1-4628-9829-83e5ebcbfabd}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>WebTimeSheetManagementDatabase</RootNamespace>
+    <AssemblyName>WebTimeSheetManagementDatabase</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Service Broker\" />
+    <Folder Include="DeploymentScripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\TimeSheetMaster.sql" />
+    <Build Include="dbo\Tables\TimeSheetDetails.sql" />
+    <Build Include="dbo\Tables\TimeSheetAuditTB.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\Registration.sql" />
+    <Build Include="dbo\Tables\ProjectMaster.sql" />
+    <Build Include="dbo\Tables\NotificationsTB.sql" />
+    <Build Include="dbo\Tables\ExpenseAuditTB.sql" />
+    <Build Include="dbo\Tables\Expense.sql" />
+    <Build Include="dbo\Tables\ELMAH_Error.sql" />
+    <Build Include="dbo\Tables\Documents.sql" />
+    <Build Include="dbo\Tables\DescriptionTB.sql" />
+    <Build Include="dbo\Tables\AuditTB.sql" />
+    <Build Include="dbo\Tables\AssignedRoles.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_CheckIsDateAlreadyUsed_New.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_CheckIsDateAlreadyUsed.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_ChangeTimesheetStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_ChangeExpenseStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_UpdateUserRole.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_UpdateTimeSheetStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_UpdatePasswordbyRegistrationID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_Updatepassword.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_UpdateExpenseStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetWeekTimeSheetDetails.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetUsersCountbyAdminByAdminID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetUsersCountbyAdmin.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetUsersCount.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetUsernamebyRegistrationID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetUserDetailsByRegistrationID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetTimeSheetsCountByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetTimeSheetsCountByAdminID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetTimeSheetMasterIDTimeSheet.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetTimeSheetbyFromDateandToDateTimeSheet.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetReportofExpense.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetProjectNamesbyTimeSheetMasterID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetProjectCount.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetPeriodsbyTimeSheetMasterID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetListofUnAssignedUsers.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetListofAdmins.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetHoursbyTimeSheetMasterID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetExpenseAuditCountByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetExpenseAuditCountByAdminID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetAllReportofExpense.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetAdminIDbyUserID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetAdminDetailsByRegistrationID.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_GetAdminCount.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_DisableExistingNotifications.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_DeleteTimeSheet.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_DeleteExpenseandDocuments.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_LogError.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorXml.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorsXml.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserIDbyTimeSheetID.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserIDbyExpenseID.sql" />
+    <Build Include="dbo\Stored Procedures\GetDescriptionbyTimeSheetMasterID.sql" />
+    <Build Include="dbo\Stored Procedures\SqlQueryNotificationStoredProcedure-d78299b8-77ec-4dae-93fc-8e458c0b2e45.sql" />
+    <Build Include="Service Broker\SqlQueryNotificationService-d78299b8-77ec-4dae-93fc-8e458c0b2e45.sql" />
+    <Build Include="Service Broker\SqlQueryNotificationService-d78299b8-77ec-4dae-93fc-8e458c0b2e45_1.sql" />
+    <Build Include="DeploymentScripts\dbo.AssignedRoles.sql" />
+    <Build Include="DeploymentScripts\dbo.AuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.DescriptionTB.sql" />
+    <Build Include="DeploymentScripts\dbo.Documents.sql" />
+    <Build Include="DeploymentScripts\dbo.ELMAH_Error.sql" />
+    <Build Include="DeploymentScripts\dbo.Expense.sql" />
+    <Build Include="DeploymentScripts\dbo.ExpenseAuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.NotificationsTB.sql" />
+    <Build Include="DeploymentScripts\dbo.ProjectMaster.sql" />
+    <Build Include="DeploymentScripts\dbo.Registration.sql" />
+    <Build Include="DeploymentScripts\dbo.Roles.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetAuditTB.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetDetails.sql" />
+    <Build Include="DeploymentScripts\dbo.TimeSheetMaster.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="DeploymentScripts\Script.PostDeployment1.sql" />
+  </ItemGroup>
+</Project>

@@ -21,3 +21,20 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+/WebTimeSheetManagementDatabase/obj/Debug
+/WebTimeSheetManagementDatabase/bin/Debug
+/.vs/WebTimeSheetManagement
+/WebTimeSheetManagementDatabase/WebTimeSheetManagementDatabase.jfm
+/WebTimeSheetManagementDatabase/WebTimeSheetManagementDatabase.dbmdl
+/WebTimeSheetManagementDatabase/WebTimeSheetManagementDatabase.sqlproj.user
+/WebTimeSheetManagement/bin
+/WebTimeSheetManagement/obj/Debug
+/WebTimeSheetManagement.Concrete/obj/Debug
+/WebTimeSheetManagement.Interface/obj/Debug
+/WebTimeSheetManagement.Models/obj/Debug
+/WebTimeSheetManagementDatabase/Import Schema Logs
+/packages/Dapper.2.0.78
+/WebTimeSheetManagement.Concrete/bin/Debug
+/WebTimeSheetManagement.Interface/bin/Debug
+/WebTimeSheetManagement.Models/bin/Debug
+/WebTimeSheetManagement/*.user
